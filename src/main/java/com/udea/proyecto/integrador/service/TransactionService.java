@@ -1,7 +1,12 @@
 package com.udea.proyecto.integrador.service;
 
-import org.springframework.stereotype.Service;
+import com.udea.proyecto.integrador.controller.OfferDTO;
 
-@Service
-public class TransactionService {
+import java.util.List;
+
+public interface TransactionService {
+
+    List<OfferDTO> getOffers();
+
+    String buyOffer(Long buyerId, Long sellerId);
 }

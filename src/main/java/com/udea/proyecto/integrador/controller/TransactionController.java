@@ -1,7 +1,7 @@
 package com.udea.proyecto.integrador.controller;
 
 import com.udea.proyecto.integrador.Entity.Offer;
-import com.udea.proyecto.integrador.service.TransactionService;
+import com.udea.proyecto.integrador.service.TransactionServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,12 +14,11 @@ import java.util.List;
 public class TransactionController {
 
     @Autowired
-    private TransactionService transactionService;
+    private TransactionServiceImpl transactionServiceImpl;
 
     @GetMapping("/get-offers")
-    ResponseEntity<List<Offer>> getOffers() {
-        //TODO: Obtener ofertas, de donde??
-        return ResponseEntity.ok(new ArrayList<>());
+    ResponseEntity<List<OfferDTO>> getOffers() {
+        return ResponseEntity.ok(transactionServiceImpl.getOffers());
     }
 
     @PostMapping("/save-offer")
@@ -29,10 +28,8 @@ public class TransactionController {
     }
 
     @PutMapping("/buy-offer")
-    ResponseEntity<Offer> buyOffer(){
-        //TODO: Cambiar la billetera de un token, se recibe el usuario comprador y vendedor para obtener la billetera
-        // y hacer el cambio.
-        return ResponseEntity.ok(new Offer());
+    ResponseEntity<String> buyOffer(@RequestParam Long buyerId, @RequestParam Long sellerId){
+        return ResponseEntity.ok(transactionServiceImpl.buyOffer(buyerId, sellerId));
     }
 
 }
