@@ -5,8 +5,6 @@ import com.udea.proyecto.integrador.service.TransactionServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -19,6 +17,11 @@ public class TransactionController {
     @GetMapping("/get-offers")
     ResponseEntity<List<OfferDTO>> getOffers() {
         return ResponseEntity.ok(transactionServiceImpl.getOffers());
+    }
+
+    @GetMapping("/get-offers/{userAddress}")
+    ResponseEntity<List<OfferDTO>> getOffersByUserAddress(@PathVariable String userAddress) {
+        return ResponseEntity.ok(transactionServiceImpl.getOffersByUserAddress(userAddress));
     }
 
     @PostMapping("/save-offer")

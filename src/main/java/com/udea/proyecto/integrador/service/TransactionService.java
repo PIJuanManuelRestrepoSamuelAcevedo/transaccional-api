@@ -9,4 +9,8 @@ public interface TransactionService {
     List<OfferDTO> getOffers();
 
     String buyOffer(Long buyerId, Long sellerId);
+
+    OfferDTO getOfferById(Long offerId);
+
+    List<OfferDTO> getOffersByUserAddress(String userAddress);
 }
