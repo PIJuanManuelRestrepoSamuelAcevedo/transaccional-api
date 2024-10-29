@@ -35,12 +35,8 @@ public class TransactionServiceImpl implements TransactionService{
 
     @Override
     public String buyOffer(Long buyerId, Long sellerId, Long offerId) {
-        //Mono<String> buyerAddress = userApiService.getUserAddress(buyerId.toString());
-        //Mono<String> sellerAddress = userApiService.getUserAddress(sellerId.toString());
         String buyerAddress = userRestTemplate.getUserAddress(buyerId.toString());
         String sellerAddress = userRestTemplate.getUserAddress(sellerId.toString());
-        System.out.println(buyerAddress);
-        System.out.println(sellerAddress);
 
         Optional<Offer> offer = offerRepository.findByOfferIdAndUserAddress(offerId, sellerAddress);
         if (offer.isEmpty()) {
@@ -50,7 +46,6 @@ public class TransactionServiceImpl implements TransactionService{
 
         offerRepository.save(offer.get());
         return "Cambio exitoso.";
-        //return tokenApiService.changesTokenOwner(buyerAddress, sellerAddress);
      }
 
     @Override
