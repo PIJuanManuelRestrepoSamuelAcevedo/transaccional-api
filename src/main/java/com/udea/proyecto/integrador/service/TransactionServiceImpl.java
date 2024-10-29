@@ -5,6 +5,7 @@ import com.udea.proyecto.integrador.controller.OfferDTO;
 import com.udea.proyecto.integrador.repository.OfferRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Mono;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,12 +16,14 @@ public class TransactionServiceImpl implements TransactionService{
     private final UserApiService userApiService;
     private final TokenApiService tokenApiService;
     private final OfferRepository offerRepository;
+    private final UserRestTemplate userRestTemplate;
     private final ModelMapper modelMapper;
 
-    public TransactionServiceImpl(UserApiService userApiService, TokenApiService tokenApiService, OfferRepository offerRepository, ModelMapper modelMapper) {
+    public TransactionServiceImpl(UserApiService userApiService, TokenApiService tokenApiService, OfferRepository offerRepository, UserRestTemplate userRestTemplate, ModelMapper modelMapper) {
         this.userApiService = userApiService;
         this.tokenApiService = tokenApiService;
         this.offerRepository = offerRepository;
+        this.userRestTemplate = userRestTemplate;
         this.modelMapper = modelMapper;
     }
 
@@ -31,11 +34,23 @@ public class TransactionServiceImpl implements TransactionService{
     }
 
     @Override
-    public String buyOffer(Long buyerId, Long sellerId) {
-        String buyerAddress = userApiService.getUserAddress(buyerId.toString());
-        String sellerAddress = userApiService.getUserAddress(sellerId.toString());
+    public String buyOffer(Long buyerId, Long sellerId, Long offerId) {
+        //Mono<String> buyerAddress = userApiService.getUserAddress(buyerId.toString());
+        //Mono<String> sellerAddress = userApiService.getUserAddress(sellerId.toString());
+        String buyerAddress = userRestTemplate.getUserAddress(buyerId.toString());
+        String sellerAddress = userRestTemplate.getUserAddress(sellerId.toString());
+        System.out.println(buyerAddress);
+        System.out.println(sellerAddress);
 
-        return tokenApiService.changesTokenOwner(buyerAddress, sellerAddress);
+        Optional<Offer> offer = offerRepository.findByOfferIdAndUserAddress(offerId, sellerAddress);
+        if (offer.isEmpty()) {
+            return "La oferta no existe.";
+        }
+        offer.get().setUserAddress(buyerAddress);
+
+        offerRepository.save(offer.get());
+        return "Cambio exitoso.";
+        //return tokenApiService.changesTokenOwner(buyerAddress, sellerAddress);
      }
 
     @Override
@@ -45,11 +60,23 @@ public class TransactionServiceImpl implements TransactionService{
     }
 
     @Override
-    public List<OfferDTO> getOffersByUserAddress(String userAddress) {
-        return offerRepository.findAllByUserAddress(userAddress).stream().map(this::getOfferDTO).toList();
+    public List<OfferDTO> getOffersByUserAddress(String username) {
+        return offerRepository.findAllByOwnerUsername(username).stream().map(this::getOfferDTO).toList();
+    }
+
+    @Override
+    public String saveOffer(OfferDTO offerDTO) {
+        offerRepository.save(getOfferEntity(offerDTO));
+        return "Oferta registrada...";
     }
 
     private OfferDTO getOfferDTO(Offer offer) {
         return modelMapper.map(offer, OfferDTO.class);
-     }
+    }
+
+    private Offer getOfferEntity(OfferDTO offerDTO) {
+        return modelMapper.map(offerDTO, Offer.class);
+    }
+
+
 }

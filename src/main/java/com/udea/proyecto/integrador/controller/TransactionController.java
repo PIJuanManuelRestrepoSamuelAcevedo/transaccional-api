@@ -1,7 +1,7 @@
 package com.udea.proyecto.integrador.controller;
 
-import com.udea.proyecto.integrador.Entity.Offer;
-import com.udea.proyecto.integrador.service.TransactionServiceImpl;
+import com.udea.proyecto.integrador.repository.OfferRepository;
+import com.udea.proyecto.integrador.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,27 +12,28 @@ import java.util.List;
 public class TransactionController {
 
     @Autowired
-    private TransactionServiceImpl transactionServiceImpl;
+    private TransactionService transactionService;
+    @Autowired
+    private OfferRepository offerRepository;
 
     @GetMapping("/get-offers")
     ResponseEntity<List<OfferDTO>> getOffers() {
-        return ResponseEntity.ok(transactionServiceImpl.getOffers());
+        return ResponseEntity.ok(transactionService.getOffers());
     }
 
     @GetMapping("/get-offers/{userAddress}")
-    ResponseEntity<List<OfferDTO>> getOffersByUserAddress(@PathVariable String userAddress) {
-        return ResponseEntity.ok(transactionServiceImpl.getOffersByUserAddress(userAddress));
+    ResponseEntity<List<OfferDTO>> getOffersByUsername(@PathVariable String username) {
+        return ResponseEntity.ok(transactionService.getOffersByUserAddress(username));
     }
 
     @PostMapping("/save-offer")
-    ResponseEntity<Offer> saveOffer(@RequestBody Offer offer) {
-        //TODO: como se creará la oferta?
-        return ResponseEntity.ok(new Offer());
+    ResponseEntity<String> saveOffer(@RequestBody OfferDTO offerDTO) {
+        return ResponseEntity.ok(transactionService.saveOffer(offerDTO));
     }
 
     @PutMapping("/buy-offer")
-    ResponseEntity<String> buyOffer(@RequestParam Long buyerId, @RequestParam Long sellerId){
-        return ResponseEntity.ok(transactionServiceImpl.buyOffer(buyerId, sellerId));
+    ResponseEntity<String> buyOffer(@RequestParam Long buyerId, @RequestParam Long sellerId, @RequestParam Long offerId){
+        return ResponseEntity.ok(transactionService.buyOffer(buyerId, sellerId, offerId));
     }
 
 }
