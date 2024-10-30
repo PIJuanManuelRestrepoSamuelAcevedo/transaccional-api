@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface OfferRepository extends JpaRepository<Offer, Long> {
 
-    List<Offer> findAllByUserAddress(String userAddress);
+    List<Offer> findAllByUserWallet(String userWallet);
     List<Offer> findAllByOwnerUsername(String username);
     Optional<Offer> findByOfferIdAndUserWallet(Long offerId, String userWallet);
 }

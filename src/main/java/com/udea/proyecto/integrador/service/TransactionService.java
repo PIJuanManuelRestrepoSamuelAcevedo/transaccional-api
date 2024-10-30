@@ -12,6 +12,6 @@ public interface TransactionService {
 
     OfferDTO getOfferById(Long offerId);
 
-    List<OfferDTO> getOffersByUserAddress(String username);
+    List<OfferDTO> getOffersByUsername(String username);
     String saveOffer(OfferDTO offerDTO);
 }

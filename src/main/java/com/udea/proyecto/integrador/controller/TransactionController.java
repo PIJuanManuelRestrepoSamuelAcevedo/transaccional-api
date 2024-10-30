@@ -25,7 +25,7 @@ public class TransactionController {
 
     @GetMapping("/get-offers/{userAddress}")
     ResponseEntity<List<OfferDTO>> getOffersByUsername(@PathVariable String username) {
-        return ResponseEntity.ok(transactionService.getOffersByUserAddress(username));
+        return ResponseEntity.ok(transactionService.getOffersByUsername(username));
     }
 
     @PostMapping("/save-offer")

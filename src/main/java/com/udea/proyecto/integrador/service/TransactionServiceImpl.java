@@ -54,7 +54,7 @@ public class TransactionServiceImpl implements TransactionService{
     }
 
     @Override
-    public List<OfferDTO> getOffersByUserAddress(String username) {
+    public List<OfferDTO> getOffersByUsername(String username) {
         return offerRepository.findAllByOwnerUsername(username).stream().map(this::getOfferDTO).toList();
     }
 
