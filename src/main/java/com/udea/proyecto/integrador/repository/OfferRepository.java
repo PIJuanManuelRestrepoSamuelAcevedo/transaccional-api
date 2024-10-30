@@ -10,5 +10,5 @@ public interface OfferRepository extends JpaRepository<Offer, Long> {
 
     List<Offer> findAllByUserAddress(String userAddress);
     List<Offer> findAllByOwnerUsername(String username);
-    Optional<Offer> findByOfferIdAndUserAddress(Long offerId, String userAddress);
+    Optional<Offer> findByOfferIdAndUserWallet(Long offerId, String userWallet);
 }

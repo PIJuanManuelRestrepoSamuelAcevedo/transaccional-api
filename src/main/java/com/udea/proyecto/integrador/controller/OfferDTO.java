@@ -2,11 +2,12 @@ package com.udea.proyecto.integrador.controller;
 
 public class OfferDTO {
     private Long offerId;
-    private String userAddress;
+    private String userWallet;
     private String ownerUsername;
     private float kwhQuantity;
     private float price;
     private float kwhUnitPrice;
+    private String energySource;
 
     public Long getOfferId() {
         return offerId;
@@ -16,12 +17,20 @@ public class OfferDTO {
         this.offerId = offerId;
     }
 
-    public String getUserAddress() {
-        return userAddress;
+    public String getUserWallet() {
+        return userWallet;
     }
 
-    public void setUserAddress(String userAddress) {
-        this.userAddress = userAddress;
+    public String getEnergySource() {
+        return energySource;
+    }
+
+    public void setEnergySource(String energySource) {
+        this.energySource = energySource;
+    }
+
+    public void setUserWallet(String userWallet) {
+        this.userWallet = userWallet;
     }
 
     public String getOwnerUsername() {

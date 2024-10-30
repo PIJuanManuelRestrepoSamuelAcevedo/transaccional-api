@@ -8,11 +8,12 @@ public class Offer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long offerId;
-    private String userAddress;
+    private String userWallet;
     private String ownerUsername;
     private float kwhQuantity;
     private float price;
     private float kwhUnitPrice;
+    private String energySource;
 
     public Long getOfferId() {
         return offerId;
@@ -22,12 +23,12 @@ public class Offer {
         this.offerId = offerId;
     }
 
-    public String getUserAddress() {
-        return userAddress;
+    public String getUserWallet() {
+        return userWallet;
     }
 
-    public void setUserAddress(String userAddress) {
-        this.userAddress = userAddress;
+    public void setUserWallet(String userWallet) {
+        this.userWallet = userWallet;
     }
 
     public String getOwnerUsername() {
@@ -60,5 +61,13 @@ public class Offer {
 
     public void setKwhUnitPrice(float kwhUnitPrice) {
         this.kwhUnitPrice = kwhUnitPrice;
+    }
+
+    public String getEnergySource() {
+        return energySource;
+    }
+
+    public void setEnergySource(String energySource) {
+        this.energySource = energySource;
     }
 }

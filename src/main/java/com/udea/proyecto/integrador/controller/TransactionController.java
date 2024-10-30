@@ -21,6 +21,8 @@ public class TransactionController {
         return ResponseEntity.ok(transactionService.getOffers());
     }
 
+    //TODO: agregar endpoint para conseguir oferta dado el id.
+
     @GetMapping("/get-offers/{userAddress}")
     ResponseEntity<List<OfferDTO>> getOffersByUsername(@PathVariable String username) {
         return ResponseEntity.ok(transactionService.getOffersByUserAddress(username));

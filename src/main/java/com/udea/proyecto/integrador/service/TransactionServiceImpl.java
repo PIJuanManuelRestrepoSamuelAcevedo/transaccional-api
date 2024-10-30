@@ -5,7 +5,6 @@ import com.udea.proyecto.integrador.controller.OfferDTO;
 import com.udea.proyecto.integrador.repository.OfferRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
-import reactor.core.publisher.Mono;
 
 import java.util.List;
 import java.util.Optional;
@@ -35,14 +34,14 @@ public class TransactionServiceImpl implements TransactionService{
 
     @Override
     public String buyOffer(Long buyerId, Long sellerId, Long offerId) {
-        String buyerAddress = userRestTemplate.getUserAddress(buyerId.toString());
-        String sellerAddress = userRestTemplate.getUserAddress(sellerId.toString());
+        String buyerWallet = userRestTemplate.getUserAddress(buyerId.toString());
+        String sellerWallet = userRestTemplate.getUserAddress(sellerId.toString());
 
-        Optional<Offer> offer = offerRepository.findByOfferIdAndUserAddress(offerId, sellerAddress);
+        Optional<Offer> offer = offerRepository.findByOfferIdAndUserWallet(offerId, sellerWallet);
         if (offer.isEmpty()) {
             return "La oferta no existe.";
         }
-        offer.get().setUserAddress(buyerAddress);
+        offer.get().setUserWallet(buyerWallet);
 
         offerRepository.save(offer.get());
         return "Cambio exitoso.";
