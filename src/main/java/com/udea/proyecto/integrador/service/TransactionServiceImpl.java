@@ -33,7 +33,9 @@ public class TransactionServiceImpl implements TransactionService{
     }
 
     @Override
-    public String buyOffer(Long buyerId, Long sellerId, Long offerId) {
+    public String buyOffer(String buyerUsername, String sellerUsername, Long offerId) {
+        Long buyerId = Long.valueOf(userRestTemplate.getUsernameFromId(buyerUsername));
+        Long sellerId = Long.valueOf(userRestTemplate.getUsernameFromId(sellerUsername));
         String buyerWallet = userRestTemplate.getUserAddress(buyerId.toString());
         String sellerWallet = userRestTemplate.getUserAddress(sellerId.toString());
 
@@ -42,6 +44,8 @@ public class TransactionServiceImpl implements TransactionService{
             return "La oferta no existe.";
         }
         offer.get().setUserWallet(buyerWallet);
+        offer.get().setOwnerUsername(buyerUsername);
+
 
         offerRepository.save(offer.get());
         return "Cambio exitoso.";

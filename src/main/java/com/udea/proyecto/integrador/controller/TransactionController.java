@@ -21,9 +21,12 @@ public class TransactionController {
         return ResponseEntity.ok(transactionService.getOffers());
     }
 
-    //TODO: agregar endpoint para conseguir oferta dado el id.
+    @GetMapping("/get-offer/{offerId}")
+    ResponseEntity<OfferDTO> getOfferFromId(@PathVariable Long offerId) {
+        return ResponseEntity.ok(transactionService.getOfferById(offerId));
+    }
 
-    @GetMapping("/get-offers/{userAddress}")
+    @GetMapping("/get-offers/{username}")
     ResponseEntity<List<OfferDTO>> getOffersByUsername(@PathVariable String username) {
         return ResponseEntity.ok(transactionService.getOffersByUsername(username));
     }
@@ -34,8 +37,8 @@ public class TransactionController {
     }
 
     @PutMapping("/buy-offer")
-    ResponseEntity<String> buyOffer(@RequestParam Long buyerId, @RequestParam Long sellerId, @RequestParam Long offerId){
-        return ResponseEntity.ok(transactionService.buyOffer(buyerId, sellerId, offerId));
+    ResponseEntity<String> buyOffer(@RequestParam String buyerUsername, @RequestParam String sellerUsername, @RequestParam Long offerId){
+        return ResponseEntity.ok(transactionService.buyOffer(buyerUsername, sellerUsername, offerId));
     }
 
 }

@@ -8,7 +8,7 @@ public interface TransactionService {
 
     List<OfferDTO> getOffers();
 
-    String buyOffer(Long buyerId, Long sellerId, Long offerId);
+    String buyOffer(String buyerUsername, String sellerUsername, Long offerId);
 
     OfferDTO getOfferById(Long offerId);
 

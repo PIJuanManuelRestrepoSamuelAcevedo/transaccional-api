@@ -10,7 +10,18 @@ import org.springframework.web.util.UriComponentsBuilder;
 public class UserRestTemplate {
 
     String getUserAddress(String userId) {
-        String url = "http://localhost:8081/users/" + userId + "/address";
+        String url = "http://localhost:8081/users/" + userId + "/wallet";
+        RestTemplate restTemplate = new RestTemplate();
+
+        UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromHttpUrl(url);
+
+        ResponseEntity<String> response = restTemplate.exchange(uriBuilder.toUriString(), HttpMethod.GET, null, String.class);
+
+        return response.getBody();
+    }
+
+    String getUsernameFromId(String username) {
+        String url = "http://localhost:8081/users/" + username + "/user_id";
         RestTemplate restTemplate = new RestTemplate();
 
         UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromHttpUrl(url);
