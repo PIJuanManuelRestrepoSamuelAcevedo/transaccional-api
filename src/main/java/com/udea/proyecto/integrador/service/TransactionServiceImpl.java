@@ -1,6 +1,7 @@
 package com.udea.proyecto.integrador.service;
 
 import com.udea.proyecto.integrador.Entity.Offer;
+import com.udea.proyecto.integrador.config.ApiException;
 import com.udea.proyecto.integrador.controller.OfferDTO;
 import com.udea.proyecto.integrador.repository.OfferRepository;
 import org.modelmapper.ModelMapper;
@@ -12,15 +13,11 @@ import java.util.Optional;
 @Service
 public class TransactionServiceImpl implements TransactionService{
 
-    private final UserApiService userApiService;
-    private final TokenApiService tokenApiService;
     private final OfferRepository offerRepository;
     private final UserRestTemplate userRestTemplate;
     private final ModelMapper modelMapper;
 
-    public TransactionServiceImpl(UserApiService userApiService, TokenApiService tokenApiService, OfferRepository offerRepository, UserRestTemplate userRestTemplate, ModelMapper modelMapper) {
-        this.userApiService = userApiService;
-        this.tokenApiService = tokenApiService;
+    public TransactionServiceImpl(OfferRepository offerRepository, UserRestTemplate userRestTemplate, ModelMapper modelMapper) {
         this.offerRepository = offerRepository;
         this.userRestTemplate = userRestTemplate;
         this.modelMapper = modelMapper;
@@ -41,7 +38,7 @@ public class TransactionServiceImpl implements TransactionService{
 
         Optional<Offer> offer = offerRepository.findByOfferIdAndUserWallet(offerId, sellerWallet);
         if (offer.isEmpty()) {
-            return "La oferta no existe.";
+            throw new ApiException("offer not found.");
         }
         offer.get().setUserWallet(buyerWallet);
         offer.get().setOwnerUsername(buyerUsername);
