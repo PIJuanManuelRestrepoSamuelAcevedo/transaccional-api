@@ -10,7 +10,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 public class UserRestTemplate {
 
     String getUserAddress(String userId) {
-        String url = "http://localhost:8081/users/" + userId + "/wallet";
+        String url = "https://user-api-g4ut.onrender.com/users/" + userId + "/wallet";
         RestTemplate restTemplate = new RestTemplate();
 
         UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromHttpUrl(url);
@@ -21,7 +21,7 @@ public class UserRestTemplate {
     }
 
     String getUsernameFromId(String username) {
-        String url = "http://localhost:8081/users/" + username + "/user_id";
+        String url = "https://user-api-g4ut.onrender.com/users/" + username + "/user_id";
         RestTemplate restTemplate = new RestTemplate();
 
         UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromHttpUrl(url);
