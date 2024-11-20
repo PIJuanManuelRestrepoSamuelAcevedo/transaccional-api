@@ -20,9 +20,10 @@ public class AppConfig {
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
                         .allowedOrigins("http://localhost:4321","http://localhost:8080",
-                                "https://marketplace-front-tau.vercel.app/")
+                                "https://marketplace-front-tau.vercel.app")
                         .allowedMethods("GET", "POST", "PUT", "DELETE")
-                        .allowedHeaders("*");
+                        .allowedHeaders("*")
+                        .allowCredentials(true);
             }
         };
     }
