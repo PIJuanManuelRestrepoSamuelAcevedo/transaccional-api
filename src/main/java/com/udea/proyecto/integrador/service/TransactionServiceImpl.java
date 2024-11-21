@@ -15,11 +15,13 @@ public class TransactionServiceImpl implements TransactionService{
 
     private final OfferRepository offerRepository;
     private final UserRestTemplate userRestTemplate;
+    private final TokenRestTemplate tokenRestTemplate;
     private final ModelMapper modelMapper;
 
-    public TransactionServiceImpl(OfferRepository offerRepository, UserRestTemplate userRestTemplate, ModelMapper modelMapper) {
+    public TransactionServiceImpl(OfferRepository offerRepository, UserRestTemplate userRestTemplate, TokenRestTemplate tokenRestTemplate, ModelMapper modelMapper) {
         this.offerRepository = offerRepository;
         this.userRestTemplate = userRestTemplate;
+        this.tokenRestTemplate = tokenRestTemplate;
         this.modelMapper = modelMapper;
     }
 
@@ -40,9 +42,25 @@ public class TransactionServiceImpl implements TransactionService{
         if (offer.isEmpty()) {
             throw new ApiException("offer not found.");
         }
+        int offerPrice = offer.get().getPrice();
+        int buyerBalance = Integer.parseInt(tokenRestTemplate.getUserBalance(buyerWallet));
+        if (buyerBalance < offerPrice) {
+            throw new ApiException("User cant buy the offer.");
+        }
         offer.get().setUserWallet(buyerWallet);
         offer.get().setOwnerUsername(buyerUsername);
 
+        System.out.println(offerPrice);
+        System.out.println(buyerBalance);
+        if (!tokenRestTemplate.updateBuyerBalance(buyerWallet, String.valueOf(offerPrice))) {
+            System.out.println("buyer");
+            System.out.println(String.valueOf(offerPrice));
+            throw new ApiException("Fail to buy the offer.");
+        }
+        if (!tokenRestTemplate.updateSellerBalance(sellerWallet, String.valueOf(offerPrice))) {
+            System.out.println("seller");
+            throw new ApiException("Fail to buy the offer.");
+        }
 
         offerRepository.save(offer.get());
         return "Cambio exitoso.";

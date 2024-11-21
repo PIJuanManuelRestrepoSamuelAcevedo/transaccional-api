@@ -11,7 +11,7 @@ public class Offer {
     private String userWallet;
     private String ownerUsername;
     private float kwhQuantity;
-    private float price;
+    private int price;
     private float kwhUnitPrice;
     private String energySource;
 
@@ -47,11 +47,11 @@ public class Offer {
         this.kwhQuantity = kwhQuantity;
     }
 
-    public float getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.udea.proyecto.integrador.IntegradorApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-11-20T00:00:46" hostname="DESKTOP-Q1RUT5C" time="0.354">
+<testsuite name="com.udea.proyecto.integrador.IntegradorApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-11-21T02:23:49" hostname="DESKTOP-Q1RUT5C" time="0.337">
   <properties/>
-  <testcase name="contextLoads()" classname="com.udea.proyecto.integrador.IntegradorApplicationTests" time="0.354"/>
-  <system-out><![CDATA[19:00:41.864 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.udea.proyecto.integrador.IntegradorApplicationTests]: IntegradorApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-19:00:41.969 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.udea.proyecto.integrador.IntegradorApplication for test class com.udea.proyecto.integrador.IntegradorApplicationTests
+  <testcase name="contextLoads()" classname="com.udea.proyecto.integrador.IntegradorApplicationTests" time="0.337"/>
+  <system-out><![CDATA[21:23:45.304 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.udea.proyecto.integrador.IntegradorApplicationTests]: IntegradorApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+21:23:45.386 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.udea.proyecto.integrador.IntegradorApplication for test class com.udea.proyecto.integrador.IntegradorApplicationTests
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -14,19 +14,19 @@
 
  :: Spring Boot ::                (v3.3.3)
 
-2024-11-19T19:00:42.326-05:00  INFO 8976 --- [transactions] [    Test worker] c.u.p.i.IntegradorApplicationTests       : Starting IntegradorApplicationTests using Java 17.0.11 with PID 8976 (started by Manuel in C:\Users\Manuel\OneDrive\Desktop\transaccional api\transaccional-api)
-2024-11-19T19:00:42.327-05:00  INFO 8976 --- [transactions] [    Test worker] c.u.p.i.IntegradorApplicationTests       : No active profile set, falling back to 1 default profile: "default"
-2024-11-19T19:00:43.049-05:00  INFO 8976 --- [transactions] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-11-19T19:00:43.189-05:00  INFO 8976 --- [transactions] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 131 ms. Found 1 JPA repository interface.
-2024-11-19T19:00:43.608-05:00  INFO 8976 --- [transactions] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-11-19T19:00:43.798-05:00  INFO 8976 --- [transactions] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
-2024-11-19T19:00:43.800-05:00  INFO 8976 --- [transactions] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-11-19T19:00:43.931-05:00  INFO 8976 --- [transactions] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-11-19T19:00:44.016-05:00  INFO 8976 --- [transactions] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
-2024-11-19T19:00:44.064-05:00  INFO 8976 --- [transactions] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-11-19T19:00:44.391-05:00  INFO 8976 --- [transactions] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-11-19T19:00:44.432-05:00  WARN 8976 --- [transactions] [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-11-19T19:00:45.153-05:00  INFO 8976 --- [transactions] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-20T21:23:45.681-05:00  INFO 8408 --- [transactions] [    Test worker] c.u.p.i.IntegradorApplicationTests       : Starting IntegradorApplicationTests using Java 17.0.11 with PID 8408 (started by Manuel in C:\Users\Manuel\OneDrive\Desktop\transaccional api\transaccional-api)
+2024-11-20T21:23:45.682-05:00  INFO 8408 --- [transactions] [    Test worker] c.u.p.i.IntegradorApplicationTests       : No active profile set, falling back to 1 default profile: "default"
+2024-11-20T21:23:46.298-05:00  INFO 8408 --- [transactions] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-20T21:23:46.412-05:00  INFO 8408 --- [transactions] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 107 ms. Found 1 JPA repository interface.
+2024-11-20T21:23:46.714-05:00  INFO 8408 --- [transactions] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-11-20T21:23:46.858-05:00  INFO 8408 --- [transactions] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2024-11-20T21:23:46.859-05:00  INFO 8408 --- [transactions] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-11-20T21:23:46.946-05:00  INFO 8408 --- [transactions] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-20T21:23:47.021-05:00  INFO 8408 --- [transactions] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-11-20T21:23:47.055-05:00  INFO 8408 --- [transactions] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-11-20T21:23:47.311-05:00  INFO 8408 --- [transactions] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-20T21:23:47.353-05:00  WARN 8408 --- [transactions] [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-11-20T21:23:47.964-05:00  INFO 8408 --- [transactions] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
 Hibernate: 
     alter table if exists offers 
        alter column energy_source set data type varchar(255)
@@ -35,10 +35,13 @@ Hibernate:
        alter column owner_username set data type varchar(255)
 Hibernate: 
     alter table if exists offers 
+       alter column price set data type integer
+Hibernate: 
+    alter table if exists offers 
        alter column user_wallet set data type varchar(255)
-2024-11-19T19:00:45.195-05:00  INFO 8976 --- [transactions] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-11-19T19:00:45.806-05:00  WARN 8976 --- [transactions] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-11-19T19:00:46.853-05:00  INFO 8976 --- [transactions] [    Test worker] c.u.p.i.IntegradorApplicationTests       : Started IntegradorApplicationTests in 4.728 seconds (process running for 5.771)
+2024-11-20T21:23:48.007-05:00  INFO 8408 --- [transactions] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-20T21:23:48.497-05:00  WARN 8408 --- [transactions] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-20T21:23:49.348-05:00  INFO 8408 --- [transactions] [    Test worker] c.u.p.i.IntegradorApplicationTests       : Started IntegradorApplicationTests in 3.834 seconds (process running for 4.719)
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
